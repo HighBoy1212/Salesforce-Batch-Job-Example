@@ -1,13 +1,13 @@
 global class string_query_batch_job implements Database.Batchable<SObject>, Database.AllowsCallouts{
     /* String q = 'SELECT ID, Description FROM Account';
-		my_first_batch_job bc = new my_first_batch_job(q);
+		string_query_batch_job bc = new string_query_batch_job(q);
 
 		database.executeBatch(bc, 1);
 	*/
     public String query = '';
     public String batchName = '';
     
-    public my_first_batch_job(String q){
+    public string_query_batch_job(String q){
         this.query = q;
     }
     
