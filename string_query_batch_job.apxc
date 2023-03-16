@@ -1,4 +1,4 @@
-global class string_query_batch_job implements Database.Batchable<SObject>, Database.AllowsCallouts{
+global class string_query_batch_job implements Database.Batchable<sObject>, Database.AllowsCallouts{
     /* String q = 'SELECT ID, Description FROM Account';
 		string_query_batch_job bc = new string_query_batch_job(q);
 
@@ -17,11 +17,11 @@ global class string_query_batch_job implements Database.Batchable<SObject>, Data
     
     global void execute(Database.BatchableContext BC, List<Account> Accs) { 
         try{
-            for(Account a : scope){
-                a.Description = 'Test description1';
+            for(Account a : Accs){
+                a.Description = 'Test description2';
             }
             
-            update scope;
+            update Accs;
         } catch (Exception e){
             system.debug('bad');
         }
