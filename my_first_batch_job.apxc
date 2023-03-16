@@ -26,4 +26,10 @@ global class my_first_batch_job implements Database.Batchable<Account>, Database
     global void finish(Database.BatchableContext BC) {
         
     }
+    /* How to execute
+      List<Account> lstAcc = [SELECT ID, Description FROM Account WHERE Name = 'GenePoint'];
+	  my_first_batch_job bc = new my_first_batch_job(lstAcc);
+
+	  database.executeBatch(bc, 1);
+	*/
 }
