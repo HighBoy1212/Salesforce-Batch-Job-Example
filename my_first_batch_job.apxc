@@ -1,0 +1,29 @@
+global class my_first_batch_job implements Database.Batchable<Account>, Database.AllowsCallouts{
+    public String query = '';
+    public String batchName = '';
+    public List<Account> stageaccs = new List<Account>();
+    
+    public my_first_batch_job(List<Account> accs){
+        this.stageaccs = accs;
+    }
+    
+    public List<Account> start(Database.BatchableContext context){
+        return this.stageaccs;
+    }
+    
+    global void execute(Database.BatchableContext BC, List<Account> scope) { 
+        try{
+            for(Account a : scope){
+                a.Description = 'Test description';
+            }
+            
+            update scope;
+        } catch (Exception e){
+            system.debug('bad');
+        }
+    }
+    
+    global void finish(Database.BatchableContext BC) {
+        
+    }
+}
